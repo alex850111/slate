@@ -1,0 +1,80 @@
+<h1 id='validation-api'>Validation API</h1>
+<p>When previous API was called, data will be created on ShopBack with parameter and “pending” status. Therefore, we need to use this API to override data status when order has been validated.</p>
+<h3 id='http-request-of-validation-api'>HTTP Request Of Validation API</h3>
+<p><code>GET http://shopback.go2cloud.org/aff_lsr</code></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+<th style="text-align: center">Necessary</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>offer_id</td>
+<td>Validation API ID in ShopBack.</td>
+<td style="text-align: center">Y</td>
+<td>3456, 4567</td>
+</tr>
+<tr>
+<td>aff_id</td>
+<td>ShopBack Taiwan Code(fixed)</td>
+<td style="text-align: center">Y</td>
+<td>1152</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Amount of the order has been madein NTD.</td>
+<td style="text-align: center">Y</td>
+<td>300, 399, 15900</td>
+</tr>
+<tr>
+<td>adv_sub</td>
+<td>Order ID of the order has been made.</td>
+<td style="text-align: center">Y</td>
+<td>“A0149”, “003-4370-A2”</td>
+</tr>
+<tr>
+<td>adv_sub2</td>
+<td>String that refer to specific tier set in ShopBack.(define by merchant)</td>
+<td style="text-align: center">N</td>
+<td>“Electronic”/ 2%</br>“Self-Brand” / 10%</td>
+</tr>
+<tr>
+<td>adv_sub3</td>
+<td>SKU of the order has been made</td>
+<td style="text-align: center">N</td>
+<td>“HP-0052”, “AC-10033”</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Final validated status on merchant site</td>
+<td style="text-align: center">Y</td>
+<td>approved/rejected</td>
+</tr>
+</tbody></table>
+<h3 id='response-of-validation-api'>Response Of Validation API</h3>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>sucess=true;</td>
+<td>Order has been updated into approved.</td>
+</tr>
+<tr>
+<td>success=false;</td>
+<td>Order has been updated into rejected.</td>
+</tr>
+</tbody></table>
+<h3 id='note'>Note</h3>
+<ol>
+<li>Each API has its own offer_id, which won’t be the same.</li>
+<li>Please make sure the OrderID of <strong>Order</strong> and <strong>Validation API</strong> stay the same.</li>
+<li>The parameter of <strong>Validation API</strong> will be regarded as confirmed information, which will be used as reference of invoice amount.</li>
+<li>Once the status is updated by <strong>Validation API</strong>, it cannot be reversed.</li>
+<li>Notice that every response without additional notes means success. Please <strong>DO NOT</strong> make duplicated call and make sure that there’s only one call for each meaningfulorder information.</li>
+</ol>

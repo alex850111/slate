@@ -1,0 +1,30 @@
+<h1 id='demo'>Demo</h1><h3 id='step-1'>Step 1.</h3>
+<p>We direct the user to sample merchant website with transaction_id and parameter through the link below. </p>
+<pre class="highlight shell"><code>curl -X GET <span class="s1">'http://shopback.go2cloud.org/aff_c?offer_id=2118&amp;aff_id=1059'</span>
+</code></pre><h3 id='step-2'>Step 2.</h3>
+<p>Value of transaction_id is <code>*start with &#39;102&#39;, length is 30*</code>.</p>
+<pre class="highlight html tab-html"><code><span class="cp">&lt;!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;title&gt;</span>302 Found<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>Found<span class="nt">&lt;/h1&gt;</span>
+        <span class="nt">&lt;p&gt;</span>The document has moved <span class="nt">&lt;a</span>
+                <span class="na">href=</span><span class="s">"https://www.google.com/?test_ref=shopback&amp;amp;sbid=1024207abb8d1b675f59803211155f"</span><span class="nt">&gt;</span>here<span class="nt">&lt;/a&gt;</span>.<span class="nt">&lt;/p&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</code></pre>
+<p>Keep the transaction_id in Session or Database as representation of this user session.</p>
+<h3 id='step-3'>Step 3.</h3>
+<p>When the order has been made, call Order API with transaction_id.</p>
+<pre class="highlight shell"><code>curl GET <span class="s1">'http://shopback.go2cloud.org/aff_lsr?offer_id=2118&amp;adv_sub=test_A&amp;amount=1&amp;transaction_id=1024207abb8d1b675f59803211155f'</span>
+</code></pre>
+<p>If the response goes <code>*success=true*</code>, then the order has been successfully created. If the response goes <code>*success=false*</code>, then some errors have occurred while calling <strong>Order API</strong>.</p>
+
+<p>Please follow the above chapter for possible reasons that cause errors.</p>
+<h3 id='step-4'>Step 4.</h3>
+<p>When the order has already been validated on the merchant side, can call <strong>Validation API</strong> to update that order into correct status on ShopBack.</p>
+<pre class="highlight shell"><code>curl GET <span class="s1">'http://shopback.go2cloud.org/aff_lsr?offer_id=9999&amp;aff_id=1152&amp;adv_sub=test_A&amp;amount=1&amp;status=approved'</span>
+</code></pre>
+<p>and the meaning of response will be as the same as above chapter description.</p>
