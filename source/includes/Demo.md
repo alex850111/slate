@@ -49,3 +49,5 @@ curl GET 'http://shopback.go2cloud.org/aff_lsr?offer_id=9999&aff_id=1152&adv_sub
 ```
 
 and the meaning of response will be as the same as above chapter description.
+
+<a class="jsbin-embed" href="https://jsbin.com/gozehun/embed?html,js,output">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?4.1.7"></script>
