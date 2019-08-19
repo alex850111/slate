@@ -1,10 +1,28 @@
 ## Order API
 
+>step 1 
+
+>user click from shopback and get redirected to merchant site with parameters that set by above submitting.
+
+>https://www.example.com/?test_ref=shopback&sbid=1024207abb8d1b675f59803211155f
+
 This API is used for order data postback. Once the purchase is done and API get called, ShopBack will receive the data and keep it in system for further validation.
 
 ### HTTP Request Of Order API
 
 `GET http://shopback.go2cloud.org/aff_lsr`
+
+>step 2 
+
+```shell
+#item-1
+curl -X GET "http://shopback.go2cloud.org/aff_lsr"
+#item-2
+curl -X GET "http://shopback.go2cloud.org/aff_lsr"
+```
+
+>call order api when the conversion is made
+
 
 | Parameter | Description | Type |
 | --------- | ----------- | :--: |

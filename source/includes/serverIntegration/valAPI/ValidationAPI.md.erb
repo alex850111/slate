@@ -5,6 +5,17 @@ When previous API was called, data will be created on ShopBack with parameter an
 
 `GET http://shopback.go2cloud.org/aff_lsr`
 
+>step 3 
+
+```shell
+#approved
+curl -X GET "http://shopback.go2cloud.org/aff_lsr"
+#rejected
+curl -X GET "http://shopback.go2cloud.org/aff_lsr"
+```
+
+>call validation api when the status of this conversion has been updated.
+
 | Parameter | Description | Type |
 | --------- | ----------- | :--: |
 | offer_id | Validation API ID in ShopBack. | String |
