@@ -233,10 +233,10 @@
                     <a href="#validation-api" class="toc-h2 toc-link" data-title="Validation API">Validation API</a>
                   </li>
                   <li>
-                    <a href="#pixel-implement" class="toc-h2 toc-link" data-title="Pixel Implement">Pixel Implement</a>
+                    <a href="#use-case-sample" class="toc-h2 toc-link" data-title="Use Case Sample">Use Case Sample</a>
                   </li>
                   <li>
-                    <a href="#use-case-sample" class="toc-h2 toc-link" data-title="Use Case Sample">Use Case Sample</a>
+                    <a href="#pixel-implement" class="toc-h2 toc-link" data-title="Pixel Implement">Pixel Implement</a>
                   </li>
               </ul>
           </li>
@@ -261,62 +261,52 @@
 <tr>
 <th>Parameter</th>
 <th>Description</th>
-<th style="text-align: center">Necessary</th>
 <th>Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>offer_id</td>
 <td>Order API ID in ShopBack.</td>
-<td style="text-align: center">Y</td>
 <td>String</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>Amount of the order has been made in NTD.</td>
-<td style="text-align: center">Y</td>
 <td>Float</td>
 </tr>
 <tr>
 <td>adv_sub</td>
 <td>Order ID of the order has been made.</td>
-<td style="text-align: center">Y</td>
 <td>String</td>
 </tr>
 <tr>
 <td>adv_sub2</td>
 <td>String that refer to specific tier set in ShopBack.(define by merchant)</td>
-<td style="text-align: center">N</td>
 <td>String</td>
 </tr>
 <tr>
 <td>adv_sub3</td>
 <td>SKU of the order has been made</td>
-<td style="text-align: center">N</td>
 <td>String</td>
 </tr>
 <tr>
 <td>adv_sub4</td>
 <td>conversion_unique_id</td>
-<td style="text-align: center">N</td>
 <td>String</td>
 </tr>
 <tr>
 <td>adv_sub5</td>
 <td></td>
-<td style="text-align: center">N</td>
 <td></td>
 </tr>
 <tr>
 <td>security_token</td>
 <td></td>
-<td style="text-align: center">Y</td>
 <td>String</td>
 </tr>
 <tr>
 <td>transaction_id</td>
 <td>Hash value for ShopBack to identify each user and give cashback</br>(default to expire after postback)</td>
-<td style="text-align: center">Y</td>
 <td>String</td>
 </tr>
 </tbody></table>
@@ -443,8 +433,6 @@
 
 <p>validation</p>
 
-<h2 id='pixel-implement'>Pixel Implement</h2>
-
 <p><h2 id='use-case-sample'>Use Case Sample</h2><h6 id='step-1'>Step 1.</h6>
 <p>We direct the user to sample merchant website with transaction_id and parameter through the link below. </p>
 
@@ -486,9 +474,9 @@
 
 <p>and the meaning of response will be as the same as above chapter description.</p>
 
-<iframe src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.js"></iframe>
+<iframe id="jsemb" src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.js&hidedevtools=0&devtoolsheight=60"></iframe>
 
-<p><a class="jsbin-embed" href="https://jsbin.com/cecagol/embed?html,js,console,output">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?4.1.7"></script></p>
+<h2 id='pixel-implement'>Pixel Implement</h2>
 
       </div>
       <div class="dark-box">

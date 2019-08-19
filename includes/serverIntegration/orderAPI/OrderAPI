@@ -7,62 +7,52 @@
 <tr>
 <th>Parameter</th>
 <th>Description</th>
-<th style="text-align: center">Necessary</th>
 <th>Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>offer_id</td>
 <td>Order API ID in ShopBack.</td>
-<td style="text-align: center">Y</td>
 <td>String</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>Amount of the order has been made in NTD.</td>
-<td style="text-align: center">Y</td>
 <td>Float</td>
 </tr>
 <tr>
 <td>adv_sub</td>
 <td>Order ID of the order has been made.</td>
-<td style="text-align: center">Y</td>
 <td>String</td>
 </tr>
 <tr>
 <td>adv_sub2</td>
 <td>String that refer to specific tier set in ShopBack.(define by merchant)</td>
-<td style="text-align: center">N</td>
 <td>String</td>
 </tr>
 <tr>
 <td>adv_sub3</td>
 <td>SKU of the order has been made</td>
-<td style="text-align: center">N</td>
 <td>String</td>
 </tr>
 <tr>
 <td>adv_sub4</td>
 <td>conversion_unique_id</td>
-<td style="text-align: center">N</td>
 <td>String</td>
 </tr>
 <tr>
 <td>adv_sub5</td>
 <td></td>
-<td style="text-align: center">N</td>
 <td></td>
 </tr>
 <tr>
 <td>security_token</td>
 <td></td>
-<td style="text-align: center">Y</td>
 <td>String</td>
 </tr>
 <tr>
 <td>transaction_id</td>
 <td>Hash value for ShopBack to identify each user and give cashback</br>(default to expire after postback)</td>
-<td style="text-align: center">Y</td>
 <td>String</td>
 </tr>
 </tbody></table>
