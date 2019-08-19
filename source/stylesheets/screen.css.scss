@@ -330,7 +330,7 @@ html, body {
     clear: both;
   }
 
-  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl{
     margin-right: 0;
     padding: 0 $main-padding;
     box-sizing: border-box;
@@ -480,6 +480,13 @@ html, body {
     &.success {
       background-color: $aside-success-bg;
     }
+  }
+
+  iframe {
+    border-width: 0px;
+    margin-right: $main-padding;
+    margin-left: $main-padding;
+    width: auto;
   }
 
   aside:before {

@@ -1,6 +1,6 @@
-# Demo
+## Use Case Sample
 
-### Step 1.
+###### Step 1.
 
 We direct the user to sample merchant website with transaction_id and parameter through the link below. 
 
@@ -8,7 +8,7 @@ We direct the user to sample merchant website with transaction_id and parameter 
 curl -X GET 'http://shopback.go2cloud.org/aff_c?offer_id=2118&aff_id=1059'
 ```
 
-### Step 2.
+###### Step 2.
 
 Value of transaction_id is `*start with '102', length is 30*`.
 
@@ -28,7 +28,7 @@ Value of transaction_id is `*start with '102', length is 30*`.
 
 Keep the transaction_id in Session or Database as representation of this user session.
 
-### Step 3.
+###### Step 3.
 
 When the order has been made, call Order API with transaction_id.
 
@@ -40,7 +40,7 @@ If the response goes `*success=true*`, then the order has been successfully crea
 
 Please follow the above chapter for possible reasons that cause errors.
 
-### Step 4.
+###### Step 4.
 
 When the order has already been validated on the merchant side, can call **Validation API** to update that order into correct status on ShopBack.
 
@@ -50,4 +50,6 @@ curl GET 'http://shopback.go2cloud.org/aff_lsr?offer_id=9999&aff_id=1152&adv_sub
 
 and the meaning of response will be as the same as above chapter description.
 
-<iframe src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.js" height="500" width="1000"></iframe>
+<iframe src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.js"></iframe>
+
+<a class="jsbin-embed" href="https://jsbin.com/cecagol/embed?html,js,console,output">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?4.1.7"></script>

@@ -1,4 +1,4 @@
-# Validation API
+## Validation API
 When previous API was called, data will be created on ShopBack with parameter and “pending” status. Therefore, we need to use this API to override data status when order has been validated.
 
 ### HTTP Request Of Validation API
@@ -30,3 +30,5 @@ When previous API was called, data will be created on ShopBack with parameter an
 3. The parameter of **Validation API** will be regarded as confirmed information, which will be used as reference of invoice amount.
 4. Once the status is updated by **Validation API**, it cannot be reversed.
 5. Notice that every response without additional notes means success. Please **DO NOT** make duplicated call and make sure that there’s only one call for each meaningfulorder information.
+
+<%= partial "includes/error_val.md" %>
