@@ -1,4 +1,4 @@
-<h1 id='validation-api'>Validation API</h1>
+<h2 id='validation-api'>Validation API</h2>
 <p>When previous API was called, data will be created on ShopBack with parameter and “pending” status. Therefore, we need to use this API to override data status when order has been validated.</p>
 <h3 id='http-request-of-validation-api'>HTTP Request Of Validation API</h3>
 <p><code>GET http://shopback.go2cloud.org/aff_lsr</code></p>
@@ -78,3 +78,7 @@
 <li>Once the status is updated by <strong>Validation API</strong>, it cannot be reversed.</li>
 <li>Notice that every response without additional notes means success. Please <strong>DO NOT</strong> make duplicated call and make sure that there’s only one call for each meaningfulorder information.</li>
 </ol>
+
+<h3 id='error'>Error</h3>
+
+<p>validation</p>

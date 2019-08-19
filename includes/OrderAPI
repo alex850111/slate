@@ -1,4 +1,4 @@
-<h1 id='order-api'>Order API</h1>
+<h2 id='order-api'>Order API</h2>
 <p>This API is used for order data postback. Once the purchase is done and API get called, ShopBack will receive the data and keep it in system for further validation.</p>
 <h3 id='http-request-of-order-api'>HTTP Request Of Order API</h3>
 <p><code>GET http://shopback.go2cloud.org/aff_lsr</code></p>
@@ -8,44 +8,62 @@
 <th>Parameter</th>
 <th>Description</th>
 <th style="text-align: center">Necessary</th>
-<th>Example</th>
+<th>Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>offer_id</td>
 <td>Order API ID in ShopBack.</td>
 <td style="text-align: center">Y</td>
-<td>1234, 2345</td>
+<td>String</td>
 </tr>
 <tr>
 <td>amount</td>
-<td>Amount of the order has been madein NTD.</td>
+<td>Amount of the order has been made in NTD.</td>
 <td style="text-align: center">Y</td>
-<td>300, 399, 15900</td>
+<td>Float</td>
 </tr>
 <tr>
 <td>adv_sub</td>
 <td>Order ID of the order has been made.</td>
 <td style="text-align: center">Y</td>
-<td>“A0149”, “003-4370-A2”</td>
+<td>String</td>
 </tr>
 <tr>
 <td>adv_sub2</td>
 <td>String that refer to specific tier set in ShopBack.(define by merchant)</td>
 <td style="text-align: center">N</td>
-<td>“Electronic”/ 2%</br>“Self-Brand” / 10%</td>
+<td>String</td>
 </tr>
 <tr>
 <td>adv_sub3</td>
 <td>SKU of the order has been made</td>
 <td style="text-align: center">N</td>
-<td>“HP-0052”, “AC-10033”</td>
+<td>String</td>
+</tr>
+<tr>
+<td>adv_sub4</td>
+<td>conversion_unique_id</td>
+<td style="text-align: center">N</td>
+<td>String</td>
+</tr>
+<tr>
+<td>adv_sub5</td>
+<td></td>
+<td style="text-align: center">N</td>
+<td></td>
+</tr>
+<tr>
+<td>security_token</td>
+<td></td>
+<td style="text-align: center">Y</td>
+<td>String</td>
 </tr>
 <tr>
 <td>transaction_id</td>
 <td>Hash value for ShopBack to identify each user and give cashback</br>(default to expire after postback)</td>
 <td style="text-align: center">Y</td>
-<td>10267617e7919a09a12c2a32524880</td>
+<td>String</td>
 </tr>
 </tbody></table>
 <h3 id='response-of-order-api'>Response Of Order API</h3>
@@ -72,3 +90,7 @@
 <td>This transaction_id has already expired.</td>
 </tr>
 </tbody></table>
+
+<h3 id='error'>Error</h3>
+
+<p>order</p>
