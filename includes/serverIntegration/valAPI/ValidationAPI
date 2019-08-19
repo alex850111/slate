@@ -7,51 +7,58 @@
 <tr>
 <th>Parameter</th>
 <th>Description</th>
-<th style="text-align: center">Necessary</th>
-<th>Example</th>
+<th style="text-align: center">Type</th>
 </tr>
 </thead><tbody>
 <tr>
 <td>offer_id</td>
 <td>Validation API ID in ShopBack.</td>
-<td style="text-align: center">Y</td>
-<td>3456, 4567</td>
+<td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>aff_id</td>
 <td>ShopBack Taiwan Code(fixed)</td>
-<td style="text-align: center">Y</td>
-<td>1152</td>
+<td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>amount</td>
 <td>Amount of the order has been madein NTD.</td>
-<td style="text-align: center">Y</td>
-<td>300, 399, 15900</td>
+<td style="text-align: center">Float</td>
 </tr>
 <tr>
 <td>adv_sub</td>
 <td>Order ID of the order has been made.</td>
-<td style="text-align: center">Y</td>
-<td>“A0149”, “003-4370-A2”</td>
+<td style="text-align: center">String</td>
 </tr>
 <tr>
-<td>adv_sub2</td>
+<td>adv_sub2 (optional)</td>
 <td>String that refer to specific tier set in ShopBack.(define by merchant)</td>
-<td style="text-align: center">N</td>
-<td>“Electronic”/ 2%</br>“Self-Brand” / 10%</td>
+<td style="text-align: center">String</td>
 </tr>
 <tr>
-<td>adv_sub3</td>
+<td>adv_sub3 (optional)</td>
 <td>SKU of the order has been made</td>
-<td style="text-align: center">N</td>
-<td>“HP-0052”, “AC-10033”</td>
+<td style="text-align: center">String</td>
+</tr>
+<tr>
+<td>adv_sub4 (optional)</td>
+<td>conversion_unique_id</td>
+<td style="text-align: center">String</td>
+</tr>
+<tr>
+<td>adv_sub5 (optional)</td>
+<td></td>
+<td style="text-align: center">String</td>
+</tr>
+<tr>
+<td>security_token</td>
+<td></td>
+<td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>status</td>
 <td>Final validated status on merchant site</td>
-<td style="text-align: center">Y</td>
-<td>approved/rejected</td>
+<td style="text-align: center">String</td>
 </tr>
 </tbody></table>
 <h3 id='response-of-validation-api'>Response Of Validation API</h3>
