@@ -50,6 +50,4 @@ curl GET 'http://shopback.go2cloud.org/aff_lsr?offer_id=9999&aff_id=1152&adv_sub
 
 and the meaning of response will be as the same as above chapter description.
 
-<iframe src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.js"></iframe>
-
-<a class="jsbin-embed" href="https://jsbin.com/cecagol/embed?html,js,console,output">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?4.1.7"></script>
+<iframe id="jsemb" src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.js&hidedevtools=0&devtoolsheight=60"></iframe>

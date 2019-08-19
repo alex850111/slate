@@ -6,17 +6,17 @@ This API is used for order data postback. Once the purchase is done and API get 
 
 `GET http://shopback.go2cloud.org/aff_lsr`
 
-| Parameter | Description | Necessary | Type |
-| --------- | ----------- | :-------: | ------- |
-| offer_id | Order API ID in ShopBack. | Y | String |
-| amount | Amount of the order has been made in NTD. | Y | Float |
-| adv_sub | Order ID of the order has been made. | Y | String |
-| adv_sub2 | String that refer to specific tier set in ShopBack.(define by merchant) | N | String |
-| adv_sub3 | SKU of the order has been made | N | String |
-| adv_sub4 | conversion_unique_id | N | String |
-| adv_sub5 |  | N |  |
-| security_token |  | Y | String |
-| transaction_id | Hash value for ShopBack to identify each user and give cashback</br>(default to expire after postback) | Y | String |
+| Parameter | Description | Type |
+| --------- | ----------- | ------- |
+| offer_id | Order API ID in ShopBack. | String |
+| amount | Amount of the order has been made in NTD. | Float |
+| adv_sub | Order ID of the order has been made. | String |
+| adv_sub2 | String that refer to specific tier set in ShopBack.(define by merchant) | String |
+| adv_sub3 | SKU of the order has been made | String |
+| adv_sub4 | conversion_unique_id | String |
+| adv_sub5 |  |  |
+| security_token |  | String |
+| transaction_id | Hash value for ShopBack to identify each user and give cashback</br>(default to expire after postback) | String |
 
 ### Response Of Order API
 
@@ -27,4 +27,4 @@ This API is used for order data postback. Once the purchase is done and API get 
 | success=false;</br>err_msg=Request offer #1234 does not match session offer #2345. | This transaction_id wasn’t distributed by your offer.|
 | success=false;</br>err_msg=Duplicate recorded with Trans. ID | This transaction_id has already expired.|
 
-<%= partial "includes/error_order.md" %>
+<%= partial "includes/server_integration/orderAPI/error_order.md" %>
