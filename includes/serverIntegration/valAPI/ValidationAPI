@@ -1,15 +1,15 @@
 <h2 id='validation-api'>Validation API</h2>
 <p>When previous API was called, data will be created on ShopBack with parameter and “pending” status. Therefore, we need to use this API to override data status when order has been validated.</p>
-<h3 id='http-request-of-validation-api'>HTTP Request Of Validation API</h3>
-<p><code>GET http://shopback.go2cloud.org/aff_lsr</code></p>
+<h3 id='https-request-of-validation-api'>HTTPS Request Of Validation API</h3>
+<p><code>GET https://shopback.go2cloud.org/aff_lsr</code></p>
 
 <blockquote>
 <p>step 3 </p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c">#approved</span>
-curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span>
 <span class="c">#rejected</span>
-curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span>
 </code></pre>
 <blockquote>
 <p>call validation api when the status of this conversion has been updated.</p>

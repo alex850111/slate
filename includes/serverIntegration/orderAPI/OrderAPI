@@ -3,21 +3,26 @@
 <p>step 1 </p>
 
 <p>user click from shopback and get redirected to merchant site with parameters that set by above submitting.</p>
-
-<p>https://www.example.com/?test_ref=shopback&amp;sbid=1024207abb8d1b675f59803211155f</p>
 </blockquote>
-
+<pre class="highlight shell tab-shell"><code><span class="s2">"https://www.example.com/?test_ref=shopback&amp;sbid=1024207abb8d1b675f59803211155f"</span>
+</code></pre>
 <p>This API is used for order data postback. Once the purchase is done and API get called, ShopBack will receive the data and keep it in system for further validation.</p>
-<h3 id='http-request-of-order-api'>HTTP Request Of Order API</h3>
-<p><code>GET http://shopback.go2cloud.org/aff_lsr</code></p>
+
+<p></br></br></p>
+<h3 id='https-request-of-order-api'>HTTPS Request Of Order API</h3>
+<p><code>GET https://shopback.go2cloud.org/aff_lsr</code></p>
 
 <blockquote>
 <p>step 2 </p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c">#item-1</span>
-curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c?offer_id=2118&amp;aff_id=1059
+            &amp;adv_sub=A0149&amp;amount=70&amp;transaction_id=10267617e7919a09a12
+            &amp;security_token=c2a32524880"</span>
 <span class="c">#item-2</span>
-curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c?offer_id=2118&amp;aff_id=1059
+            &amp;adv_sub=A0188&amp;amount=130&amp;transaction_id=10267617e7919a09a12
+            &amp;security_token=c2a32524880"</span>
 </code></pre>
 <blockquote>
 <p>call order api when the conversion is made</p>
