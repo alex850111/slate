@@ -233,9 +233,6 @@
                   <li>
                     <a href="#validation-api" class="toc-h2 toc-link" data-title="Validation API">Validation API</a>
                   </li>
-                  <li>
-                    <a href="#use-case-sample" class="toc-h2 toc-link" data-title="Use Case Sample">Use Case Sample</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -254,11 +251,33 @@
 
 <h2 id='order-api'>Order API</h2>
 
+<blockquote>
+<p>step 1 </p>
+
+<p>user click from shopback and get redirected to merchant site with parameters that set by above submitting.</p>
+
+<p>https://www.example.com/?test_ref=shopback&amp;sbid=1024207abb8d1b675f59803211155f</p>
+</blockquote>
+
 <p>This API is used for order data postback. Once the purchase is done and API get called, ShopBack will receive the data and keep it in system for further validation.</p>
 
 <h3 id='http-request-of-order-api'>HTTP Request Of Order API</h3>
 
 <p><code>GET http://shopback.go2cloud.org/aff_lsr</code></p>
+
+<blockquote>
+<p>step 2 </p>
+</blockquote>
+
+<pre class="highlight shell tab-shell"><code><span class="c">#item-1</span>
+curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+<span class="c">#item-2</span>
+curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+</code></pre>
+
+<blockquote>
+<p>call order api when the conversion is made</p>
+</blockquote>
 
 <table><thead>
 <tr>
@@ -352,6 +371,20 @@
 
 <p><code>GET http://shopback.go2cloud.org/aff_lsr</code></p>
 
+<blockquote>
+<p>step 3 </p>
+</blockquote>
+
+<pre class="highlight shell tab-shell"><code><span class="c">#approved</span>
+curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+<span class="c">#rejected</span>
+curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+</code></pre>
+
+<blockquote>
+<p>call validation api when the status of this conversion has been updated.</p>
+</blockquote>
+
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -443,33 +476,10 @@
 
 <p>validation</p>
 
-<p><h2 id='use-case-sample'>Use Case Sample</h2><h3 id='step-1'>step 1</h3>
-<p>user click from shopback and get redirected to merchant site with parameters that set by above submitting.</p></p>
-
-<p>https://www.example.com/?test_ref=shopback&amp;sbid=1024207abb8d1b675f59803211155f</p>
-
-<p><h3 id='step-2'>step 2</h3><pre class="highlight shell tab-shell"><code><span class="c">#item-1</span>
-curl -X GET <span class="s2">&quot;http://shopback.go2cloud.org/aff_lsr&quot;</span>
-<span class="c">#item-2</span>
-curl -X GET <span class="s2">&quot;http://shopback.go2cloud.org/aff_lsr&quot;</span>
-</code></pre>
-<p>call order api when the conversion is made</p></p>
-
-<p></br></br></br></br></p>
-
-<p><h3 id='step-3'>step 3</h3><pre class="highlight shell tab-shell"><code><span class="c">#approved</span>
-curl -X GET <span class="s2">&quot;http://shopback.go2cloud.org/aff_lsr&quot;</span>
-<span class="c">#rejected</span>
-curl -X GET <span class="s2">&quot;http://shopback.go2cloud.org/aff_lsr&quot;</span>
-</code></pre>
-<p>call validation api when the status of this conversion has been updated.</p></p>
-
-<p></br></br></br></br></p>
+<h1 id='pixel-implement'>Pixel Implement</h1>
 
 <p></br>
 <iframe id="jsemb" src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.html&hidedevtools=0&devtoolsheight=60"></iframe></p>
-
-<h1 id='pixel-implement'>Pixel Implement</h1>
 
       </div>
       <div class="dark-box">

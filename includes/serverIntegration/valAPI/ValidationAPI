@@ -3,6 +3,18 @@
 <h3 id='http-request-of-validation-api'>HTTP Request Of Validation API</h3>
 <p><code>GET http://shopback.go2cloud.org/aff_lsr</code></p>
 
+<blockquote>
+<p>step 3 </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c">#approved</span>
+curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+<span class="c">#rejected</span>
+curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+</code></pre>
+<blockquote>
+<p>call validation api when the status of this conversion has been updated.</p>
+</blockquote>
+
 <table><thead>
 <tr>
 <th>Parameter</th>

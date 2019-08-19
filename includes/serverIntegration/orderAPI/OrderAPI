@@ -1,7 +1,27 @@
 <h2 id='order-api'>Order API</h2>
+<blockquote>
+<p>step 1 </p>
+
+<p>user click from shopback and get redirected to merchant site with parameters that set by above submitting.</p>
+
+<p>https://www.example.com/?test_ref=shopback&amp;sbid=1024207abb8d1b675f59803211155f</p>
+</blockquote>
+
 <p>This API is used for order data postback. Once the purchase is done and API get called, ShopBack will receive the data and keep it in system for further validation.</p>
 <h3 id='http-request-of-order-api'>HTTP Request Of Order API</h3>
 <p><code>GET http://shopback.go2cloud.org/aff_lsr</code></p>
+
+<blockquote>
+<p>step 2 </p>
+</blockquote>
+<pre class="highlight shell tab-shell"><code><span class="c">#item-1</span>
+curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+<span class="c">#item-2</span>
+curl -X GET <span class="s2">"http://shopback.go2cloud.org/aff_lsr"</span>
+</code></pre>
+<blockquote>
+<p>call order api when the conversion is made</p>
+</blockquote>
 
 <table><thead>
 <tr>
