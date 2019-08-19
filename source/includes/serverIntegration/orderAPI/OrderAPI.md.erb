@@ -7,14 +7,14 @@ This API is used for order data postback. Once the purchase is done and API get 
 `GET http://shopback.go2cloud.org/aff_lsr`
 
 | Parameter | Description | Type |
-| --------- | ----------- | ------- |
+| --------- | ----------- | :--: |
 | offer_id | Order API ID in ShopBack. | String |
 | amount | Amount of the order has been made in NTD. | Float |
 | adv_sub | Order ID of the order has been made. | String |
-| adv_sub2 | String that refer to specific tier set in ShopBack.(define by merchant) | String |
-| adv_sub3 | SKU of the order has been made | String |
-| adv_sub4 | conversion_unique_id | String |
-| adv_sub5 |  |  |
+| adv_sub2 (optional) | String that refer to specific tier set in ShopBack.(define by merchant) | String |
+| adv_sub3 (optional) | SKU of the order has been made | String |
+| adv_sub4 (optional) | conversion_unique_id | String |
+| adv_sub5 (optional) |  |  |
 | security_token |  | String |
 | transaction_id | Hash value for ShopBack to identify each user and give cashback</br>(default to expire after postback) | String |
 

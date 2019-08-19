@@ -265,7 +265,7 @@ html, body {
   // I know, it's hackish, but it's the simplist way to make the left
   // half of the content always this background color.
   .dark-box {
-    display: none;
+    // display: none;
     width: $examples-width;
     background-color: $examples-bg;
     position: absolute;
@@ -331,7 +331,7 @@ html, body {
   }
 
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl{
-    margin-right: 0;
+    margin-right: $examples-width;
     padding: 0 $main-padding;
     box-sizing: border-box;
     display: block;
@@ -484,9 +484,9 @@ html, body {
 
   iframe {
     border-width: 0px;
-    margin-right: $main-padding;
-    margin-left: $main-padding;
-    width: 90%;
+    // margin-right: $main-padding;
+    // margin-left: $main-padding;
+    width: 100%;
     height: 600px;
   }
 
@@ -527,18 +527,20 @@ html, body {
     background-color: $code-bg;
     color: #fff;
 
-    margin: 0 $main-padding;
-    // width: $examples-width;
+    margin: 0;
+    width: $examples-width;
+    // padding: 0 $main-padding;
+    float:right;
+    clear:right;
+    @extend %right-col;
+    box-sizing: border-box;
+
+    // margin: 0 $main-padding;
     // width: 100%;
-    padding: 0 $main-padding;
-    // float:right;
-    // clear:right;
-    float:none;
+    // float:none;
     // clear:left;
+    // box-sizing: content-box;
 
-    // @extend %right-col;
-
-    box-sizing: content-box;
 
     &>p { margin: 0; }
 
@@ -565,9 +567,9 @@ html, body {
     }
   }
 
-  &>blockquote {
-    padding: $code-annotation-padding 2em;
-  }
+  // &>blockquote {
+  //   padding: $code-annotation-padding 2em;
+  // }
 }
 
 ////////////////////////////////////////////////////////////////////////////////

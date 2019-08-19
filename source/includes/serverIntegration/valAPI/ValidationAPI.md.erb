@@ -5,15 +5,18 @@ When previous API was called, data will be created on ShopBack with parameter an
 
 `GET http://shopback.go2cloud.org/aff_lsr`
 
-| Parameter | Description | Necessary | Example |
-| --------- | ----------- | :-------: | ------- |
-| offer_id | Validation API ID in ShopBack. | Y | 3456, 4567 |
-| aff_id | ShopBack Taiwan Code(fixed) | Y | 1152 |
-| amount | Amount of the order has been madein NTD. | Y | 300, 399, 15900 |
-| adv_sub | Order ID of the order has been made. | Y | “A0149”, “003-4370-A2” |
-| adv_sub2 | String that refer to specific tier set in ShopBack.(define by merchant) | N | “Electronic”/ 2%</br>“Self-Brand” / 10%|
-| adv_sub3 | SKU of the order has been made | N | “HP-0052”, “AC-10033” |
-| status | Final validated status on merchant site | Y | approved/rejected |
+| Parameter | Description | Type |
+| --------- | ----------- | :--: |
+| offer_id | Validation API ID in ShopBack. | String |
+| aff_id | ShopBack Taiwan Code(fixed) | String |
+| amount | Amount of the order has been madein NTD. | Float |
+| adv_sub | Order ID of the order has been made. | String |
+| adv_sub2 (optional) | String that refer to specific tier set in ShopBack.(define by merchant) | String |
+| adv_sub3 (optional) | SKU of the order has been made | String |
+| adv_sub4 (optional) | conversion_unique_id | String |
+| adv_sub5 (optional) |  | String |
+| security_token |  | String |
+| status | Final validated status on merchant site | String |
 
 
 ### Response Of Validation API
