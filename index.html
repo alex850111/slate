@@ -201,7 +201,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -212,6 +212,7 @@
       <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="javascript">javascript</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -266,6 +267,7 @@
 </blockquote>
 
 <pre class="highlight shell tab-shell"><code><span class="s2">"https://www.example.com/?test_ref=shopback&amp;sbid=1024207abb8d1b675f59803211155f"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="s2">"https://www.example.com/?test_ref=shopback&amp;sbid=1024207abb8d1b675f59803211155f"</span>
 </code></pre>
 
 <p>This API is used for order data postback. Once the purchase is done and API get called, ShopBack will receive the data and keep it in system for further validation.</p>
@@ -296,6 +298,24 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span c
     <span class="s2">"amount"</span>:130,<span class="se">\</span>
     <span class="s2">"transaction_id"</span>:<span class="s2">"10267617e7919a09a12"</span>,<span class="se">\</span>
     <span class="s2">"security_token"</span>:<span class="s2">"c2a32524880"</span><span class="o">}</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// item-1</span>
+<span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"adv_sub"</span><span class="p">:</span><span class="s2">"A0149"</span><span class="p">,</span> <span class="s2">"amount"</span><span class="p">:</span><span class="mi">70</span><span class="p">,</span>
+        <span class="s2">"transaction_id"</span><span class="p">:</span><span class="s2">"10267617e7919a09a12"</span><span class="p">,</span>
+        <span class="s2">"security_token"</span><span class="p">:</span><span class="s2">"c2a32524880"</span><span class="p">};</span>
+<span class="c1">// item-2</span>
+<span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"adv_sub"</span><span class="p">:</span><span class="s2">"A0188"</span><span class="p">,</span> <span class="s2">"amount"</span><span class="p">:</span><span class="mi">130</span><span class="p">,</span>
+        <span class="s2">"transaction_id"</span><span class="p">:</span><span class="s2">"10267617e7919a09a12"</span><span class="p">,</span>
+        <span class="s2">"security_token"</span><span class="p">:</span><span class="s2">"c2a32524880"</span><span class="p">};</span>
+<span class="c1">// send request</span>
+<span class="kd">var</span> <span class="nx">XMLHttpRequest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"xmlhttprequest"</span><span class="p">).</span><span class="nx">XMLHttpRequest</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">requests</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://shopback.go2cloud.org/aff_c?offer_id=2118"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">keys</span><span class="p">)</span>
+    <span class="nx">src</span> <span class="o">+=</span> <span class="s1">'&amp;'</span> <span class="o">+</span> <span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'='</span> <span class="o">+</span> <span class="nx">param</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]];</span>
+<span class="nx">requests</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">src</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">requests</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">returnValue</span> <span class="o">=</span> <span class="nx">requests</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span>
 </code></pre>
 
 <blockquote>
@@ -415,6 +435,24 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
     <span class="s2">"amount"</span>:130,<span class="se">\</span>
     <span class="s2">"status"</span>:<span class="s2">"rejected"</span>,<span class="se">\</span>
     <span class="s2">"security_token"</span>:<span class="s2">"c2a32524880"</span><span class="o">}</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// approved</span>
+<span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"aff_id"</span><span class="p">:</span><span class="s2">"1152"</span><span class="p">,</span> <span class="s2">"adv_sub"</span><span class="p">:</span><span class="s2">"A0149"</span><span class="p">,</span>
+            <span class="s2">"amount"</span><span class="p">:</span><span class="mi">70</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span><span class="s2">"approved"</span><span class="p">,</span>
+            <span class="s2">"security_token"</span><span class="p">:</span><span class="s2">"c2a32524880"</span><span class="p">};</span>
+<span class="c1">// rejected</span>
+<span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"aff_id"</span><span class="p">:</span><span class="s2">"1152"</span><span class="p">,</span> <span class="s2">"adv_sub"</span><span class="p">:</span><span class="s2">"A0188"</span><span class="p">,</span>
+            <span class="s2">"amount"</span><span class="p">:</span><span class="mi">130</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span><span class="s2">"rejected"</span><span class="p">,</span>
+            <span class="s2">"security_token"</span><span class="p">:</span><span class="s2">"c2a32524880"</span><span class="p">};</span>
+<span class="c1">// send request</span>
+<span class="kd">var</span> <span class="nx">XMLHttpRequest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"xmlhttprequest"</span><span class="p">).</span><span class="nx">XMLHttpRequest</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">requests</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://shopback.go2cloud.org/aff_c?offer_id=2118"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">keys</span><span class="p">)</span>
+    <span class="nx">src</span> <span class="o">+=</span> <span class="s1">'&amp;'</span> <span class="o">+</span> <span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'='</span> <span class="o">+</span> <span class="nx">param</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]];</span>
+<span class="nx">requests</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">src</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">requests</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">returnValue</span> <span class="o">=</span> <span class="nx">requests</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span>
 </code></pre>
 
 <blockquote>
@@ -512,10 +550,27 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 
 <p>validation</p>
 
-<p><h1 id='pixel-implement'>Pixel Implement</h1><h3 id='referral-handle'>Referral Handle</h3>
-<p></br>
-<iframe id="jsemb" src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.html&hidedevtools=0&devtoolsheight=60"></iframe></p>
-<h3 id='conversion-handle'>Conversion Handle</h3>
+<p><h1 id='pixel-implement'>Pixel Implement</h1><h3 id='referral-handle'>Referral Handle</h3><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">ShopBackCookieSave</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">ssCalculateExpireDate</span><span class="p">(</span><span class="nx">days</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+        <span class="nx">d</span><span class="p">.</span><span class="nx">setTime</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="nx">days</span> <span class="o"><em></span> <span class="mi">24</span> <span class="o"></em></span> <span class="mi">60</span> <span class="o"><em></span> <span class="mi">60</span> <span class="o"></em></span> <span class="mi">1000</span><span class="p">));</span>
+        <span class="nx">d</span><span class="p">.</span><span class="nx">toUTCString</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nx">d</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">getParams</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&quot;[?&amp;]&quot;</span> <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;=([^&amp;]*)&quot;</span><span class="p">)).</span><span class="nx">exec</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">))</span>
+            <span class="k">return</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">name</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">getParams</span><span class="p">(</span><span class="nx">name</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">+</span> <span class="nx">getParams</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;;expires= &quot;</span> <span class="o">+</span> <span class="nx">ssCalculateExpireDate</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;; path=/&quot;</span><span class="p">;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;save &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;cookie successfully&quot;</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;this url doesnt contain&quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;parameter.&quot;</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><h3 id='conversion-handle'>Conversion Handle</h3>
 <p></br>
 <iframe id="jsemb" src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.html&hidedevtools=0&devtoolsheight=60"></iframe></p></p>
 
@@ -523,6 +578,7 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="javascript">javascript</a>
           </div>
       </div>
     </div>

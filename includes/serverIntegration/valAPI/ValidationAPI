@@ -23,6 +23,24 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
     <span class="s2">"amount"</span>:130,<span class="se">\</span>
     <span class="s2">"status"</span>:<span class="s2">"rejected"</span>,<span class="se">\</span>
     <span class="s2">"security_token"</span>:<span class="s2">"c2a32524880"</span><span class="o">}</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// approved</span>
+<span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"aff_id"</span><span class="p">:</span><span class="s2">"1152"</span><span class="p">,</span> <span class="s2">"adv_sub"</span><span class="p">:</span><span class="s2">"A0149"</span><span class="p">,</span>
+            <span class="s2">"amount"</span><span class="p">:</span><span class="mi">70</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span><span class="s2">"approved"</span><span class="p">,</span>
+            <span class="s2">"security_token"</span><span class="p">:</span><span class="s2">"c2a32524880"</span><span class="p">};</span>
+<span class="c1">// rejected</span>
+<span class="kd">var</span> <span class="nx">param</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"aff_id"</span><span class="p">:</span><span class="s2">"1152"</span><span class="p">,</span> <span class="s2">"adv_sub"</span><span class="p">:</span><span class="s2">"A0188"</span><span class="p">,</span>
+            <span class="s2">"amount"</span><span class="p">:</span><span class="mi">130</span><span class="p">,</span> <span class="s2">"status"</span><span class="p">:</span><span class="s2">"rejected"</span><span class="p">,</span>
+            <span class="s2">"security_token"</span><span class="p">:</span><span class="s2">"c2a32524880"</span><span class="p">};</span>
+<span class="c1">// send request</span>
+<span class="kd">var</span> <span class="nx">XMLHttpRequest</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"xmlhttprequest"</span><span class="p">).</span><span class="nx">XMLHttpRequest</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">requests</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://shopback.go2cloud.org/aff_c?offer_id=2118"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">param</span><span class="p">);</span>
+<span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="k">in</span> <span class="nx">keys</span><span class="p">)</span>
+    <span class="nx">src</span> <span class="o">+=</span> <span class="s1">'&amp;'</span> <span class="o">+</span> <span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">+</span> <span class="s1">'='</span> <span class="o">+</span> <span class="nx">param</span><span class="p">[</span><span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]];</span>
+<span class="nx">requests</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">src</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">requests</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+<span class="kd">var</span> <span class="nx">returnValue</span> <span class="o">=</span> <span class="nx">requests</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span>
 </code></pre>
 <blockquote>
 <p>call validation api when the status of this conversion has been updated.</p>
