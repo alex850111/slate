@@ -20,13 +20,20 @@ This API is used for order data postback. Once the purchase is done and API get 
 
 ```shell
 #item-1
-curl -X GET "https://shopback.go2cloud.org/aff_c?offer_id=2118&aff_id=1059
-            &adv_sub=A0149&amount=70&transaction_id=10267617e7919a09a12
-            &security_token=c2a32524880"
+curl -X GET "https://shopback.go2cloud.org/aff_c"\
+-d {"offer_id":"2118",\
+    "adv_sub":"A0149",\
+    "amount":70,\
+    "transaction_id":"10267617e7919a09a12",\
+    "security_token":"c2a32524880"}
+
 #item-2
-curl -X GET "https://shopback.go2cloud.org/aff_c?offer_id=2118&aff_id=1059
-            &adv_sub=A0188&amount=130&transaction_id=10267617e7919a09a12
-            &security_token=c2a32524880"
+curl -X GET "https://shopback.go2cloud.org/aff_c"\
+-d {"offer_id":"2118",\
+    "adv_sub":"A0188",\
+    "amount":130,\
+    "transaction_id":"10267617e7919a09a12",\
+    "security_token":"c2a32524880"}
 ```
 
 >call order api when the conversion is made
