@@ -21,3 +21,6 @@ function ShopBackCookieSave(name) {
     }
 }
 ShopBackCookieSave("utm_source");
+if(document.URL.indexOf("utm_source") < 0) {
+    window.location.replace(document.URL + "?utm_source=shopback");
+}

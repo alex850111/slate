@@ -8,6 +8,10 @@
 "https://www.example.com/?test_ref=shopback&sbid=1024207abb8d1b675f59803211155f"
 ```
 
+```javascript
+"https://www.example.com/?test_ref=shopback&sbid=1024207abb8d1b675f59803211155f"
+```
+
 This API is used for order data postback. Once the purchase is done and API get called, ShopBack will receive the data and keep it in system for further validation.
 
 <aside class="notice">Note that every product id could only appears once in an order.</br> 
@@ -35,6 +39,26 @@ curl -X GET "https://shopback.go2cloud.org/aff_c"\
     "amount":130,\
     "transaction_id":"10267617e7919a09a12",\
     "security_token":"c2a32524880"}
+```
+```javascript
+// item-1
+var param = {"adv_sub":"A0149", "amount":70,
+        "transaction_id":"10267617e7919a09a12",
+        "security_token":"c2a32524880"};
+// item-2
+var param = {"adv_sub":"A0188", "amount":130,
+        "transaction_id":"10267617e7919a09a12",
+        "security_token":"c2a32524880"};
+// send request
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+var requests = new XMLHttpRequest();
+var src = "https://shopback.go2cloud.org/aff_c?offer_id=2118";
+var keys = Object.keys(param);
+for(var i in keys)
+    src += '&' + keys[i] + '=' + param[keys[i]];
+requests.open('GET', src, false);
+requests.send();
+var returnValue = requests.responseText;
 ```
 
 >call order api when the conversion is made
