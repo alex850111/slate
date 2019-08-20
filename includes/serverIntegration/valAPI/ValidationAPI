@@ -7,9 +7,22 @@
 <p>step 3 </p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c">#approved</span>
-curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span>
+curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span class="se">\</span>
+-d <span class="o">{</span><span class="s2">"offer_id"</span>:<span class="s2">"2118"</span>,<span class="se">\</span>
+    <span class="s2">"aff_id"</span>:<span class="s2">"1059"</span>,<span class="se">\</span>
+    <span class="s2">"adv_sub"</span>:<span class="s2">"A0149"</span>,<span class="se">\</span>
+    <span class="s2">"amount"</span>:70,<span class="se">\</span>
+    <span class="s2">"status"</span>:<span class="s2">"approved"</span>,<span class="se">\</span>
+    <span class="s2">"security_token"</span>:<span class="s2">"c2a32524880"</span><span class="o">}</span>
+
 <span class="c">#rejected</span>
-curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span>
+curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span class="se">\</span>
+-d <span class="o">{</span><span class="s2">"offer_id"</span>:<span class="s2">"2118"</span>,<span class="se">\</span>
+    <span class="s2">"aff_id"</span>:<span class="s2">"1059"</span>,<span class="se">\</span>
+    <span class="s2">"adv_sub"</span>:<span class="s2">"A0188"</span>,<span class="se">\</span>
+    <span class="s2">"amount"</span>:130,<span class="se">\</span>
+    <span class="s2">"status"</span>:<span class="s2">"rejected"</span>,<span class="se">\</span>
+    <span class="s2">"security_token"</span>:<span class="s2">"c2a32524880"</span><span class="o">}</span>
 </code></pre>
 <blockquote>
 <p>call validation api when the status of this conversion has been updated.</p>

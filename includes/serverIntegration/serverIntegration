@@ -23,13 +23,20 @@
 </blockquote>
 
 <pre class="highlight shell tab-shell"><code><span class="c">#item-1</span>
-curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c?offer_id=2118&amp;aff_id=1059
-            &amp;adv_sub=A0149&amp;amount=70&amp;transaction_id=10267617e7919a09a12
-            &amp;security_token=c2a32524880"</span>
+curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span class="se">\</span>
+-d <span class="o">{</span><span class="s2">"offer_id"</span>:<span class="s2">"2118"</span>,<span class="se">\</span>
+    <span class="s2">"adv_sub"</span>:<span class="s2">"A0149"</span>,<span class="se">\</span>
+    <span class="s2">"amount"</span>:70,<span class="se">\</span>
+    <span class="s2">"transaction_id"</span>:<span class="s2">"10267617e7919a09a12"</span>,<span class="se">\</span>
+    <span class="s2">"security_token"</span>:<span class="s2">"c2a32524880"</span><span class="o">}</span>
+
 <span class="c">#item-2</span>
-curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c?offer_id=2118&amp;aff_id=1059
-            &amp;adv_sub=A0188&amp;amount=130&amp;transaction_id=10267617e7919a09a12
-            &amp;security_token=c2a32524880"</span>
+curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span class="se">\</span>
+-d <span class="o">{</span><span class="s2">"offer_id"</span>:<span class="s2">"2118"</span>,<span class="se">\</span>
+    <span class="s2">"adv_sub"</span>:<span class="s2">"A0188"</span>,<span class="se">\</span>
+    <span class="s2">"amount"</span>:130,<span class="se">\</span>
+    <span class="s2">"transaction_id"</span>:<span class="s2">"10267617e7919a09a12"</span>,<span class="se">\</span>
+    <span class="s2">"security_token"</span>:<span class="s2">"c2a32524880"</span><span class="o">}</span>
 </code></pre>
 
 <blockquote>
@@ -133,9 +140,22 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c?offer_id=2118&
 </blockquote>
 
 <pre class="highlight shell tab-shell"><code><span class="c">#approved</span>
-curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span>
+curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span class="se">\</span>
+-d <span class="o">{</span><span class="s2">"offer_id"</span>:<span class="s2">"2118"</span>,<span class="se">\</span>
+    <span class="s2">"aff_id"</span>:<span class="s2">"1059"</span>,<span class="se">\</span>
+    <span class="s2">"adv_sub"</span>:<span class="s2">"A0149"</span>,<span class="se">\</span>
+    <span class="s2">"amount"</span>:70,<span class="se">\</span>
+    <span class="s2">"status"</span>:<span class="s2">"approved"</span>,<span class="se">\</span>
+    <span class="s2">"security_token"</span>:<span class="s2">"c2a32524880"</span><span class="o">}</span>
+
 <span class="c">#rejected</span>
-curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span>
+curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span class="se">\</span>
+-d <span class="o">{</span><span class="s2">"offer_id"</span>:<span class="s2">"2118"</span>,<span class="se">\</span>
+    <span class="s2">"aff_id"</span>:<span class="s2">"1059"</span>,<span class="se">\</span>
+    <span class="s2">"adv_sub"</span>:<span class="s2">"A0188"</span>,<span class="se">\</span>
+    <span class="s2">"amount"</span>:130,<span class="se">\</span>
+    <span class="s2">"status"</span>:<span class="s2">"rejected"</span>,<span class="se">\</span>
+    <span class="s2">"security_token"</span>:<span class="s2">"c2a32524880"</span><span class="o">}</span>
 </code></pre>
 
 <blockquote>
