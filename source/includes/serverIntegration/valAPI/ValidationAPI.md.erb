@@ -11,7 +11,7 @@ When previous API was called, data will be created on ShopBack with parameter an
 #approved
 curl -X GET "https://shopback.go2cloud.org/aff_lsr"\
 -d {"offer_id":"2118",\
-    "aff_id":"1059",\
+    "aff_id":"1152",\
     "adv_sub":"A0149",\
     "amount":70,\
     "status":"approved",\
@@ -20,7 +20,7 @@ curl -X GET "https://shopback.go2cloud.org/aff_lsr"\
 #rejected
 curl -X GET "https://shopback.go2cloud.org/aff_lsr"\
 -d {"offer_id":"2118",\
-    "aff_id":"1059",\
+    "aff_id":"1152",\
     "adv_sub":"A0188",\
     "amount":130,\
     "status":"rejected",\
@@ -32,7 +32,7 @@ curl -X GET "https://shopback.go2cloud.org/aff_lsr"\
 | Parameter | Description | Type |
 | --------- | ----------- | :--: |
 | offer_id | Validation API ID in ShopBack. | String |
-| aff_id | ShopBack Taiwan Code(fixed) | String |
+| aff_id | ShopBack Taiwan Code(fixed) : 1152 | String |
 | amount | Amount of the order has been madein NTD. | Float |
 | adv_sub | Order ID of the order has been made. | String |
 | adv_sub2 (optional) | String that refer to specific tier set in ShopBack.(define by merchant) | String |
