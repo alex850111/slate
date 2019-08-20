@@ -270,7 +270,8 @@
 
 <p>This API is used for order data postback. Once the purchase is done and API get called, ShopBack will receive the data and keep it in system for further validation.</p>
 
-<p></br></br></p>
+<aside class="notice">Note that every product id could only appears once in an order.</br> 
+If there are more than one of a unique product, please sum their price. </aside>
 
 <h3 id='https-request-of-order-api'>HTTPS Request Of Order API</h3>
 
@@ -400,7 +401,7 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span c
 <pre class="highlight shell tab-shell"><code><span class="c">#approved</span>
 curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span class="se">\</span>
 -d <span class="o">{</span><span class="s2">"offer_id"</span>:<span class="s2">"2118"</span>,<span class="se">\</span>
-    <span class="s2">"aff_id"</span>:<span class="s2">"1059"</span>,<span class="se">\</span>
+    <span class="s2">"aff_id"</span>:<span class="s2">"1152"</span>,<span class="se">\</span>
     <span class="s2">"adv_sub"</span>:<span class="s2">"A0149"</span>,<span class="se">\</span>
     <span class="s2">"amount"</span>:70,<span class="se">\</span>
     <span class="s2">"status"</span>:<span class="s2">"approved"</span>,<span class="se">\</span>
@@ -409,7 +410,7 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 <span class="c">#rejected</span>
 curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span class="se">\</span>
 -d <span class="o">{</span><span class="s2">"offer_id"</span>:<span class="s2">"2118"</span>,<span class="se">\</span>
-    <span class="s2">"aff_id"</span>:<span class="s2">"1059"</span>,<span class="se">\</span>
+    <span class="s2">"aff_id"</span>:<span class="s2">"1152"</span>,<span class="se">\</span>
     <span class="s2">"adv_sub"</span>:<span class="s2">"A0188"</span>,<span class="se">\</span>
     <span class="s2">"amount"</span>:130,<span class="se">\</span>
     <span class="s2">"status"</span>:<span class="s2">"rejected"</span>,<span class="se">\</span>
@@ -434,7 +435,7 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 </tr>
 <tr>
 <td>aff_id</td>
-<td>ShopBack Taiwan Code(fixed)</td>
+<td>ShopBack Taiwan Code(fixed) : 1152</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
@@ -511,7 +512,10 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 
 <p>validation</p>
 
-<p><h1 id='pixel-implement'>Pixel Implement</h1><h3 id='referral-handle'>Referral Handle</h3><h3 id='conversion-handle'>Conversion Handle</h3>
+<p><h1 id='pixel-implement'>Pixel Implement</h1><h3 id='referral-handle'>Referral Handle</h3>
+<p></br>
+<iframe id="jsemb" src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.html&hidedevtools=0&devtoolsheight=60"></iframe></p>
+<h3 id='conversion-handle'>Conversion Handle</h3>
 <p></br>
 <iframe id="jsemb" src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.html&hidedevtools=0&devtoolsheight=60"></iframe></p></p>
 
