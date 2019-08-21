@@ -28,6 +28,10 @@ function ShopBackCookieSave(name) {
 }
 ```
 
+``` python
+# 請見 javascript
+```
+
 ### Referral Handle
 
 content
@@ -47,20 +51,26 @@ content
 ### Conversion Handle
 
 ```javascript
-var token = "";
+/**
+ * securityToken, offerId, orderId and amount are necessary
+ * The others are optional parameters 
+ */
+var securityToken = "";
 function createPix() {
   if (getCookie("utm_source") == "shopback") {
-    var offerId, orderId; // Necessary
+    var offerId, orderId; 
     var items = [{"productId":"", "price":0, "tier":""},
                 {"productId":"", "price":0, "tier":""}];
     for (var i = 0; i < items.length; i++) {
-      var product_id = items[i]["productId"], tier = items[i]["tier"]; // Optional
-      var conversion_unique_id = offerId + '_' + orderId + '_' + product_id;
-      var amount = items[i]["price"]; // Necessary
-      var pix = document.createElement("img");
+      // concatenate parameters after API call url
+      var productId = items[i]["productId"], tier = items[i]["tier"]; 
+      var conversionUniqueId = offerId + '_' + orderId + '_' + productId; 
+      var amount = items[i]["price"]; 
       var src = "https://shopback.go2cloud.org/aff_l?offer_id=" + offerId + "&adv_sub=" + 
-          orderId + "&adv_sub2=" + tier + "&adv_sub3=" + product_id + "&adv_sub4=" +
-          conversion_unique_id + "&amount=" + amount + "&security_token=" + token;
+      orderId + "&adv_sub2=" + tier + "&adv_sub3=" + productId + "&adv_sub4=" +
+      conversionUniqueId + "&amount=" + amount + "&security_token=" + securityToken;
+      // create pixel 
+      var pix = document.createElement("img");
       pix.setAttribute("width", "1");
       pix.setAttribute("height", "1");
       pix.setAttribute("src", decodeURIComponent(src));
