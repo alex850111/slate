@@ -1,0 +1,77 @@
+<h1 id='pixel-implement'>Pixel Implement</h1><pre class="highlight shell tab-shell"><code><span class="c"># 請見 javascript</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">ShopBackCookieSave</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">ssCalculateExpireDate</span><span class="p">(</span><span class="nx">days</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+        <span class="nx">d</span><span class="p">.</span><span class="nx">setTime</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="nx">days</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">60</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">));</span>
+        <span class="nx">d</span><span class="p">.</span><span class="nx">toUTCString</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nx">d</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">getParams</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">"[?&amp;]"</span> <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"=([^&amp;]*)"</span><span class="p">)).</span><span class="nx">exec</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">))</span>
+            <span class="k">return</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">name</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">getParams</span><span class="p">(</span><span class="nx">name</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">"="</span> <span class="o">+</span> <span class="nx">getParams</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">";expires= "</span> <span class="o">+</span> <span class="nx">ssCalculateExpireDate</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">+</span> <span class="s2">"; path=/"</span><span class="p">;</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"save "</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">"cookie successfully"</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">"this url doesnt contain"</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">"parameter."</span><span class="p">);</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="c"># 請見 javascript</span>
+</code></pre><h3 id='referral-handle'>Referral Handle</h3>
+<p>content</p>
+
+<p>content</p>
+
+<p>content</p>
+
+<p>content</p>
+
+<aside class="notice"></br></br></br></br></aside>
+
+<p>content</p>
+
+<p>content</p>
+<h3 id='conversion-handle'>Conversion Handle</h3><pre class="highlight javascript tab-javascript"><code><span class="cm">/**
+ * securityToken, offerId, orderId and amount are necessary
+ * The others are optional parameters 
+ */</span>
+<span class="kd">var</span> <span class="nx">securityToken</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">createPix</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">getCookie</span><span class="p">(</span><span class="s2">"utm_source"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"shopback"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">offerId</span><span class="p">,</span> <span class="nx">orderId</span><span class="p">;</span> 
+    <span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"productId"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"tier"</span><span class="p">:</span><span class="s2">""</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">"productId"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"tier"</span><span class="p">:</span><span class="s2">""</span><span class="p">}];</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// concatenate parameters after API call url</span>
+      <span class="kd">var</span> <span class="nx">productId</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s2">"productId"</span><span class="p">],</span> <span class="nx">tier</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s2">"tier"</span><span class="p">];</span> 
+      <span class="kd">var</span> <span class="nx">conversionUniqueId</span> <span class="o">=</span> <span class="nx">offerId</span> <span class="o">+</span> <span class="s1">'_'</span> <span class="o">+</span> <span class="nx">orderId</span> <span class="o">+</span> <span class="s1">'_'</span> <span class="o">+</span> <span class="nx">productId</span><span class="p">;</span> 
+      <span class="kd">var</span> <span class="nx">amount</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s2">"price"</span><span class="p">];</span> 
+      <span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://shopback.go2cloud.org/aff_l?offer_id="</span> <span class="o">+</span> <span class="nx">offerId</span> <span class="o">+</span> <span class="s2">"&amp;adv_sub="</span> <span class="o">+</span> 
+      <span class="nx">orderId</span> <span class="o">+</span> <span class="s2">"&amp;adv_sub2="</span> <span class="o">+</span> <span class="nx">tier</span> <span class="o">+</span> <span class="s2">"&amp;adv_sub3="</span> <span class="o">+</span> <span class="nx">productId</span> <span class="o">+</span> <span class="s2">"&amp;adv_sub4="</span> <span class="o">+</span>
+      <span class="nx">conversionUniqueId</span> <span class="o">+</span> <span class="s2">"&amp;amount="</span> <span class="o">+</span> <span class="nx">amount</span> <span class="o">+</span> <span class="s2">"&amp;security_token="</span> <span class="o">+</span> <span class="nx">securityToken</span><span class="p">;</span>
+      <span class="c1">// create pixel </span>
+      <span class="kd">var</span> <span class="nx">pix</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"img"</span><span class="p">);</span>
+      <span class="nx">pix</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"width"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">);</span>
+      <span class="nx">pix</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">);</span>
+      <span class="nx">pix</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"src"</span><span class="p">,</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">src</span><span class="p">));</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">pix</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">getCookie</span><span class="p">(</span><span class="nx">cname</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">cname</span> <span class="o">+</span> <span class="s2">"="</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">ca</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">";"</span><span class="p">);</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">trim</span><span class="p">();</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="s2">""</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+<p></br>
+<iframe id="jsemb" src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.html&hidedevtools=0&devtoolsheight=60"></iframe></p>
