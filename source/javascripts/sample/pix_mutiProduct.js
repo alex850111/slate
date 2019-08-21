@@ -5,12 +5,12 @@ function createPix() {
     var items = [{"productId":"", "price":0, "tier":""},
                 {"productId":"", "price":0, "tier":""}];
     for (var i = 0; i < items.length; i++) {
-      var product = items[i]["productId"], tier = items[i]["tier"]; // Optional
-      var conversion_unique_id = offer_id + '_' + order_id + '_' + product_id;
+      var product_id = items[i]["productId"], tier = items[i]["tier"]; // Optional
+      var conversion_unique_id = offerId + '_' + orderId + '_' + product_id;
       var amount = items[i]["price"]; // Necessary
       var pix = document.createElement("img");
       var src = "https://shopback.go2cloud.org/aff_l?offer_id=" + offerId + "&adv_sub=" + 
-          orderId + "&adv_sub2=" + tier + "&adv_sub3=" + product + "&adv_sub4=" +
+          orderId + "&adv_sub2=" + tier + "&adv_sub3=" + product_id + "&adv_sub4=" +
           conversion_unique_id + "&amount=" + amount + "&security_token=" + token;
       pix.setAttribute("width", "1");
       pix.setAttribute("height", "1");

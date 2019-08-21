@@ -18,18 +18,18 @@ function getCookie(cname) {
  * console 中將會顯示產生出的 url 
  * 實際 pixel tracking 請見右側 code block
  */
-var token = "";
 function createPix() {
+    var token = "";
     if (getCookie("utm_source") == "shopback") {
         var offerId, orderId; // Necessary
         var items = [{ "productId": "", "price": 0 , "tier": "" },
                      { "productId": "", "price": 0, "tier": "" }];
         for (var i = 0; i < items.length; i++) {
-            var product = items[i]["productId"], tier = items[i]["tier"]; // Optional
-            var conversion_unique_id = offer_id + '_' + order_id + '_' + product_id; //Optional
+            var product_id = items[i]["productId"], tier = items[i]["tier"]; // Optional
+            var conversion_unique_id = offerId + '_' + orderId + '_' + product_id; //Optional
             var amount = items[i]["price"]; // Necessary
             var src = "https://shopback.go2cloud.org/aff_l?offer_id=" + offerId + "&adv_sub=" + 
-                orderId + "&adv_sub2=" + tier + "&adv_sub3=" + product + "&adv_sub4=" +
+                orderId + "&adv_sub2=" + tier + "&adv_sub3=" + product_id + "&adv_sub4=" +
                 conversion_unique_id + "&amount=" + amount + "&security_token=" + token;
             console.log(src + "\n");
         }
