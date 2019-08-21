@@ -6,6 +6,7 @@
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="s2">"https://www.example.com/?test_ref=shopback&amp;sbid=1024207abb8d1b675f59803211155f"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="s2">"https://www.example.com/?test_ref=shopback&amp;sbid=1024207abb8d1b675f59803211155f"</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="s">"https://www.example.com/?test_ref=shopback&amp;sbid=1024207abb8d1b675f59803211155f"</span>
 </code></pre>
 <p>This API is used for order data postback. Once the purchase is done and API get called, ShopBack will receive the data and keep it in system for further validation.</p>
 
@@ -50,6 +51,23 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span c
 <span class="nx">requests</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">'GET'</span><span class="p">,</span> <span class="nx">src</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
 <span class="nx">requests</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
 <span class="kd">var</span> <span class="nx">returnValue</span> <span class="o">=</span> <span class="nx">requests</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="c"># item-1</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"offer_id"</span><span class="p">:</span><span class="s">"2118"</span><span class="p">,</span> <span class="s">"adv_sub"</span><span class="p">:</span><span class="s">"A0149"</span><span class="p">,</span> <span class="s">"amount"</span><span class="p">:</span><span class="mi">70</span><span class="p">,</span>
+    <span class="s">"transaction_id"</span><span class="p">:</span><span class="s">"10267617e7919a09a12"</span><span class="p">,</span>
+    <span class="s">"security_token"</span><span class="p">:</span><span class="s">"c2a32524880"</span>
+<span class="p">}</span>
+<span class="c"># item-2</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">"offer_id"</span><span class="p">:</span><span class="s">"2118"</span><span class="p">,</span> <span class="s">"adv_sub"</span><span class="p">:</span><span class="s">"A0188"</span><span class="p">,</span> <span class="s">"amount"</span><span class="p">:</span><span class="mi">130</span><span class="p">,</span>
+    <span class="s">"transaction_id"</span><span class="p">:</span><span class="s">"10267617e7919a09a12"</span><span class="p">,</span>
+    <span class="s">"security_token"</span><span class="p">:</span><span class="s">"c2a32524880"</span>
+<span class="p">}</span>
+
+<span class="n">src</span> <span class="o">=</span> <span class="s">"https://shopback.go2cloud.org/aff_c"</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="n">params</span><span class="p">)</span>
 </code></pre>
 <blockquote>
 <p>call order api when the conversion is made</p>
