@@ -248,6 +248,23 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#app-to-app" class="toc-h1 toc-link" data-title="App To App">App To App</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#universal-link-vs-mobile-deep-links" class="toc-h2 toc-link" data-title="Universal link vs mobile deep links">Universal link vs mobile deep links</a>
+                  </li>
+                  <li>
+                    <a href="#attribution-tracking" class="toc-h2 toc-link" data-title="Attribution tracking">Attribution tracking</a>
+                  </li>
+                  <li>
+                    <a href="#attribution-support-via-deep-link" class="toc-h2 toc-link" data-title="Attribution support via deep link">Attribution support via deep link</a>
+                  </li>
+                  <li>
+                    <a href="#implementing-universal-link-with-attribution" class="toc-h2 toc-link" data-title="Implementing universal link with attribution">Implementing universal link with attribution</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -651,47 +668,50 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 
 <p>content</p>
 
-<p><h3 id='conversion-handle'>Conversion Handle</h3><pre class="highlight javascript tab-javascript"><code><span class="cm">/**
+<h3 id='conversion-handle'>Conversion Handle</h3><pre class="highlight javascript tab-javascript"><code><span class="cm">/**
  * securityToken, offerId, orderId and amount are necessary
  * The others are optional parameters 
  */</span>
-<span class="kd">var</span> <span class="nx">securityToken</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">securityToken</span> <span class="o">=</span> <span class="s2">""</span><span class="p">;</span>
 <span class="kd">function</span> <span class="nx">createPix</span><span class="p">()</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">getCookie</span><span class="p">(</span><span class="s2">&quot;utm_source&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;shopback&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">getCookie</span><span class="p">(</span><span class="s2">"utm_source"</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"shopback"</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">offerId</span><span class="p">,</span> <span class="nx">orderId</span><span class="p">;</span> 
-    <span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;productId&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;tier&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">},</span>
-                <span class="p">{</span><span class="s2">&quot;productId&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;price&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;tier&quot;</span><span class="p">:</span><span class="s2">&quot;&quot;</span><span class="p">}];</span>
+    <span class="kd">var</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">"productId"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"tier"</span><span class="p">:</span><span class="s2">""</span><span class="p">},</span>
+                <span class="p">{</span><span class="s2">"productId"</span><span class="p">:</span><span class="s2">""</span><span class="p">,</span> <span class="s2">"price"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">"tier"</span><span class="p">:</span><span class="s2">""</span><span class="p">}];</span>
     <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">items</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
       <span class="c1">// concatenate parameters after API call url</span>
-      <span class="kd">var</span> <span class="nx">productId</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s2">&quot;productId&quot;</span><span class="p">],</span> <span class="nx">tier</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s2">&quot;tier&quot;</span><span class="p">];</span> 
-      <span class="kd">var</span> <span class="nx">conversionUniqueId</span> <span class="o">=</span> <span class="nx">offerId</span> <span class="o">+</span> <span class="s1">&#39;<em>&#39;</span> <span class="o">+</span> <span class="nx">orderId</span> <span class="o">+</span> <span class="s1">&#39;</em>&#39;</span> <span class="o">+</span> <span class="nx">productId</span><span class="p">;</span> 
-      <span class="kd">var</span> <span class="nx">amount</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s2">&quot;price&quot;</span><span class="p">];</span> 
-      <span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;https://shopback.go2cloud.org/aff_l?offer_id=&quot;</span> <span class="o">+</span> <span class="nx">offerId</span> <span class="o">+</span> <span class="s2">&quot;&amp;adv_sub=&quot;</span> <span class="o">+</span> 
-      <span class="nx">orderId</span> <span class="o">+</span> <span class="s2">&quot;&amp;adv_sub2=&quot;</span> <span class="o">+</span> <span class="nx">tier</span> <span class="o">+</span> <span class="s2">&quot;&amp;adv_sub3=&quot;</span> <span class="o">+</span> <span class="nx">productId</span> <span class="o">+</span> <span class="s2">&quot;&amp;conversion_unique_id=&quot;</span> <span class="o">+</span>
-      <span class="nx">conversionUniqueId</span> <span class="o">+</span> <span class="s2">&quot;&amp;amount=&quot;</span> <span class="o">+</span> <span class="nx">amount</span> <span class="o">+</span> <span class="s2">&quot;&amp;security_token=&quot;</span> <span class="o">+</span> <span class="nx">securityToken</span><span class="p">;</span>
+      <span class="kd">var</span> <span class="nx">productId</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s2">"productId"</span><span class="p">],</span> <span class="nx">tier</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s2">"tier"</span><span class="p">];</span> 
+      <span class="kd">var</span> <span class="nx">conversionUniqueId</span> <span class="o">=</span> <span class="nx">offerId</span> <span class="o">+</span> <span class="s1">'_'</span> <span class="o">+</span> <span class="nx">orderId</span> <span class="o">+</span> <span class="s1">'_'</span> <span class="o">+</span> <span class="nx">productId</span><span class="p">;</span> 
+      <span class="kd">var</span> <span class="nx">amount</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s2">"price"</span><span class="p">];</span> 
+      <span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="s2">"https://shopback.go2cloud.org/aff_l?offer_id="</span> <span class="o">+</span> <span class="nx">offerId</span> <span class="o">+</span> <span class="s2">"&amp;adv_sub="</span> <span class="o">+</span> 
+      <span class="nx">orderId</span> <span class="o">+</span> <span class="s2">"&amp;adv_sub2="</span> <span class="o">+</span> <span class="nx">tier</span> <span class="o">+</span> <span class="s2">"&amp;adv_sub3="</span> <span class="o">+</span> <span class="nx">productId</span> <span class="o">+</span> <span class="s2">"&amp;conversion_unique_id="</span> <span class="o">+</span>
+      <span class="nx">conversionUniqueId</span> <span class="o">+</span> <span class="s2">"&amp;amount="</span> <span class="o">+</span> <span class="nx">amount</span> <span class="o">+</span> <span class="s2">"&amp;security_token="</span> <span class="o">+</span> <span class="nx">securityToken</span><span class="p">;</span>
       <span class="c1">// create pixel </span>
-      <span class="kd">var</span> <span class="nx">pix</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;img&quot;</span><span class="p">);</span>
-      <span class="nx">pix</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;width&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">);</span>
-      <span class="nx">pix</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;height&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">);</span>
-      <span class="nx">pix</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">&quot;src&quot;</span><span class="p">,</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">src</span><span class="p">));</span>
+      <span class="kd">var</span> <span class="nx">pix</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"img"</span><span class="p">);</span>
+      <span class="nx">pix</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"width"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">);</span>
+      <span class="nx">pix</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"height"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">);</span>
+      <span class="nx">pix</span><span class="p">.</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"src"</span><span class="p">,</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">src</span><span class="p">));</span>
       <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">pix</span><span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">}</span></p>
+<span class="p">}</span>
 
-<p><span class="kd">function</span> <span class="nx">getCookie</span><span class="p">(</span><span class="nx">cname</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">cname</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">ca</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot;;&quot;</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">getCookie</span><span class="p">(</span><span class="nx">cname</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="nx">cname</span> <span class="o">+</span> <span class="s2">"="</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">ca</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s2">";"</span><span class="p">);</span>
   <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">ca</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">c</span> <span class="o">=</span> <span class="nx">ca</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">trim</span><span class="p">();</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
       <span class="k">return</span> <span class="nx">c</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="nx">name</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
   <span class="p">}</span>
-  <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+  <span class="k">return</span> <span class="s2">""</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre>
 <p></br>
-<iframe id="jsemb" src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.html&hidedevtools=0&devtoolsheight=60"></iframe></p></p>
+<iframe id="jsemb" src="https://stackblitz.com/edit/js-ye3mfy?embed=1&file=index.html&hidedevtools=0&devtoolsheight=60"></iframe></p>
+
+
+<h1 id='app-to-app'>App To App</h1><h2 id='universal-link-vs-mobile-deep-links'>Universal link vs mobile deep links</h2><h2 id='attribution-tracking'>Attribution tracking</h2><h3 id='attribution-of-the-source'>Attribution of the source</h3><h3 id='capturing-additional-attributes-from-source'>Capturing additional attributes from source</h3><h3 id='deep-linking-directly-to-specific-app-screens-with-attributions'>Deep linking directly to specific app screens with attributions</h3><h3 id='deferred-deep-link-attribution'>Deferred deep link attribution</h3><h2 id='attribution-support-via-deep-link'>Attribution support via deep link</h2><h3 id='android'>Android</h3><h3 id='ios'>iOS</h3><h3 id='web-server'>Web server</h3><h2 id='implementing-universal-link-with-attribution'>Implementing universal link with attribution</h2><h3 id='android-2'>Android</h3><h3 id='ios-2'>iOS</h3><h3 id='web-server-2'>Web server</h3>
 
       </div>
       <div class="dark-box">
