@@ -382,11 +382,16 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span c
 </tr>
 <tr>
 <td>adv_sub4 (optional)</td>
-<td>conversion_unique_id</td>
+<td></td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>adv_sub5 (optional)</td>
+<td></td>
+<td style="text-align: center">String</td>
+</tr>
+<tr>
+<td>conversion_unique_id</td>
 <td></td>
 <td style="text-align: center">String</td>
 </tr>
@@ -557,6 +562,11 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 <td style="text-align: center">String</td>
 </tr>
 <tr>
+<td>conversion_unique_id</td>
+<td></td>
+<td style="text-align: center">String</td>
+</tr>
+<tr>
 <td>security_token</td>
 <td></td>
 <td style="text-align: center">String</td>
@@ -653,7 +663,7 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
       <span class="kd">var</span> <span class="nx">conversionUniqueId</span> <span class="o">=</span> <span class="nx">offerId</span> <span class="o">+</span> <span class="s1">&#39;<em>&#39;</span> <span class="o">+</span> <span class="nx">orderId</span> <span class="o">+</span> <span class="s1">&#39;</em>&#39;</span> <span class="o">+</span> <span class="nx">productId</span><span class="p">;</span> 
       <span class="kd">var</span> <span class="nx">amount</span> <span class="o">=</span> <span class="nx">items</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s2">&quot;price&quot;</span><span class="p">];</span> 
       <span class="kd">var</span> <span class="nx">src</span> <span class="o">=</span> <span class="s2">&quot;https://shopback.go2cloud.org/aff_l?offer_id=&quot;</span> <span class="o">+</span> <span class="nx">offerId</span> <span class="o">+</span> <span class="s2">&quot;&amp;adv_sub=&quot;</span> <span class="o">+</span> 
-      <span class="nx">orderId</span> <span class="o">+</span> <span class="s2">&quot;&amp;adv_sub2=&quot;</span> <span class="o">+</span> <span class="nx">tier</span> <span class="o">+</span> <span class="s2">&quot;&amp;adv_sub3=&quot;</span> <span class="o">+</span> <span class="nx">productId</span> <span class="o">+</span> <span class="s2">&quot;&amp;adv_sub4=&quot;</span> <span class="o">+</span>
+      <span class="nx">orderId</span> <span class="o">+</span> <span class="s2">&quot;&amp;adv_sub2=&quot;</span> <span class="o">+</span> <span class="nx">tier</span> <span class="o">+</span> <span class="s2">&quot;&amp;adv_sub3=&quot;</span> <span class="o">+</span> <span class="nx">productId</span> <span class="o">+</span> <span class="s2">&quot;&amp;conversion_unique_id=&quot;</span> <span class="o">+</span>
       <span class="nx">conversionUniqueId</span> <span class="o">+</span> <span class="s2">&quot;&amp;amount=&quot;</span> <span class="o">+</span> <span class="nx">amount</span> <span class="o">+</span> <span class="s2">&quot;&amp;security_token=&quot;</span> <span class="o">+</span> <span class="nx">securityToken</span><span class="p">;</span>
       <span class="c1">// create pixel </span>
       <span class="kd">var</span> <span class="nx">pix</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;img&quot;</span><span class="p">);</span>

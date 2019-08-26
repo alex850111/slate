@@ -118,6 +118,11 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 <td style="text-align: center">String</td>
 </tr>
 <tr>
+<td>conversion_unique_id</td>
+<td></td>
+<td style="text-align: center">String</td>
+</tr>
+<tr>
 <td>security_token</td>
 <td></td>
 <td style="text-align: center">String</td>
