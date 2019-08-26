@@ -387,17 +387,17 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span c
 </tr>
 <tr>
 <td>adv_sub5 (optional)</td>
-<td></td>
+<td>Product name</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>conversion_unique_id</td>
-<td></td>
+<td>Unique key that concatenated by {merchant_name}_{order_id}</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>security_token</td>
-<td></td>
+<td>Hash key provided by shopback for postback</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
@@ -419,6 +419,16 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span c
 <td>sucess=true;</td>
 <td>Order has created successfully by API call.</td>
 </tr>
+</tbody></table>
+
+<h3 id='error'>Error</h3>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>success=false;</br>err_msg=Invalid Trans.</td>
 <td>ID Transaction_id is in wrong format.</td>
@@ -432,10 +442,6 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span c
 <td>This transaction_id has already expired.</td>
 </tr>
 </tbody></table>
-
-<h3 id='error'>Error</h3>
-
-<p>order</p>
 
 <h2 id='validation-api'>Validation API</h2>
 
@@ -558,17 +564,17 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 </tr>
 <tr>
 <td>adv_sub5 (optional)</td>
-<td></td>
+<td>Product name</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>conversion_unique_id</td>
-<td></td>
+<td>Unique key that concatenated by {merchant_name}_{order_id}</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>security_token</td>
-<td></td>
+<td>Hash key provided by shopback for postback</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
@@ -590,10 +596,6 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 <td>sucess=true;</td>
 <td>Order has been updated into approved.</td>
 </tr>
-<tr>
-<td>success=false;</td>
-<td>Order has been updated into rejected.</td>
-</tr>
 </tbody></table>
 
 <h3 id='note'>Note</h3>
@@ -608,36 +610,40 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 
 <h3 id='error'>Error</h3>
 
-<p>validation</p>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success=false;</td>
+<td>Order has been updated into rejected.</td>
+</tr>
+</tbody></table>
 
 <p><h1 id='pixel-implement'>Pixel Implement</h1><pre class="highlight shell tab-shell"><code><span class="c"># 請見 javascript</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">ShopBackCookieSave</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">function</span> <span class="nx">ssCalculateExpireDate</span><span class="p">(</span><span class="nx">days</span><span class="p">)</span> <span class="p">{</span>
         <span class="kd">var</span> <span class="nx">d</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-        <span class="nx">d</span><span class="p">.</span><span class="nx">setTime</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="nx">days</span> <span class="o"><em></span> <span class="mi">24</span> <span class="o"></em></span> <span class="mi">60</span> <span class="o"><em></span> <span class="mi">60</span> <span class="o"></em></span> <span class="mi">1000</span><span class="p">));</span>
+        <span class="nx">d</span><span class="p">.</span><span class="nx">setTime</span><span class="p">(</span><span class="nx">d</span><span class="p">.</span><span class="nx">getTime</span><span class="p">()</span> <span class="o">+</span> <span class="p">(</span><span class="nx">days</span> <span class="o"><em></span> <span class="mi">86400000</span><span class="p">));</span>
         <span class="nx">d</span><span class="p">.</span><span class="nx">toUTCString</span><span class="p">();</span>
         <span class="k">return</span> <span class="nx">d</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="kd">function</span> <span class="nx">getParams</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&quot;[?&amp;]&quot;</span> <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;=([^&amp;]*)&quot;</span><span class="p">)).</span><span class="nx">exec</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">))</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">name</span> <span class="o">=</span> <span class="p">(</span><span class="k">new</span> <span class="nb">RegExp</span><span class="p">(</span><span class="s2">&quot;[?&amp;]&quot;</span> <span class="o">+</span> <span class="nb">encodeURIComponent</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;=([^&amp;]</em>)&quot;</span><span class="p">)).</span><span class="nx">exec</span><span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">search</span><span class="p">))</span>
             <span class="k">return</span> <span class="nb">decodeURIComponent</span><span class="p">(</span><span class="nx">name</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
     <span class="p">}</span>
     <span class="k">if</span> <span class="p">(</span><span class="nx">getParams</span><span class="p">(</span><span class="nx">name</span><span class="p">))</span> <span class="p">{</span>
         <span class="nb">document</span><span class="p">.</span><span class="nx">cookie</span> <span class="o">=</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span> <span class="o">+</span> <span class="nx">getParams</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;;expires= &quot;</span> <span class="o">+</span> <span class="nx">ssCalculateExpireDate</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;; path=/&quot;</span><span class="p">;</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;save &quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;cookie successfully&quot;</span><span class="p">);</span>
-        <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;this url doesnt contain&quot;</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">&quot;parameter.&quot;</span><span class="p">);</span>
-        <span class="k">return</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre><pre class="highlight python tab-python"><code><span class="c"># 請見 javascript</span>
 </code></pre><h3 id='referral-handle'>Referral Handle</h3>
 <p>content</p></p>
-
-<p>content</p>
-
-<p>content</p>
 
 <p>content</p>
 

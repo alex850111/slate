@@ -1,2 +1,20 @@
 <h3 id='error'>Error</h3>
-<p>order</p>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success=false;</br>err_msg=Invalid Trans.</td>
+<td>ID Transaction_id is in wrong format.</td>
+</tr>
+<tr>
+<td>success=false;</br>err_msg=Request offer #1234 does not match session offer #2345.</td>
+<td>This transaction_id wasn’t distributed by your offer.</td>
+</tr>
+<tr>
+<td>success=false;</br>err_msg=Duplicate recorded with Trans. ID</td>
+<td>This transaction_id has already expired.</td>
+</tr>
+</tbody></table>

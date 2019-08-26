@@ -1,2 +1,12 @@
 <h3 id='error'>Error</h3>
-<p>validation</p>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success=false;</td>
+<td>Order has been updated into rejected.</td>
+</tr>
+</tbody></table>

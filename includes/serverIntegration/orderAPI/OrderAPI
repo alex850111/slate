@@ -119,17 +119,17 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span c
 </tr>
 <tr>
 <td>adv_sub5 (optional)</td>
-<td></td>
+<td>Product name</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>conversion_unique_id</td>
-<td></td>
+<td>Unique key that concatenated by {merchant_name}_{order_id}</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>security_token</td>
-<td></td>
+<td>Hash key provided by shopback for postback</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
@@ -149,6 +149,16 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span c
 <td>sucess=true;</td>
 <td>Order has created successfully by API call.</td>
 </tr>
+</tbody></table>
+
+<h3 id='error'>Error</h3>
+
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
 <tr>
 <td>success=false;</br>err_msg=Invalid Trans.</td>
 <td>ID Transaction_id is in wrong format.</td>
@@ -162,7 +172,3 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_c"</span><span c
 <td>This transaction_id has already expired.</td>
 </tr>
 </tbody></table>
-
-<h3 id='error'>Error</h3>
-
-<p>order</p>

@@ -114,17 +114,17 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 </tr>
 <tr>
 <td>adv_sub5 (optional)</td>
-<td></td>
+<td>Product name</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>conversion_unique_id</td>
-<td></td>
+<td>Unique key that concatenated by {merchant_name}_{order_id}</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
 <td>security_token</td>
-<td></td>
+<td>Hash key provided by shopback for postback</td>
 <td style="text-align: center">String</td>
 </tr>
 <tr>
@@ -144,10 +144,6 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 <td>sucess=true;</td>
 <td>Order has been updated into approved.</td>
 </tr>
-<tr>
-<td>success=false;</td>
-<td>Order has been updated into rejected.</td>
-</tr>
 </tbody></table>
 <h3 id='note'>Note</h3>
 <ol>
@@ -160,4 +156,14 @@ curl -X GET <span class="s2">"https://shopback.go2cloud.org/aff_lsr"</span><span
 
 <h3 id='error'>Error</h3>
 
-<p>validation</p>
+<table><thead>
+<tr>
+<th>String</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>success=false;</td>
+<td>Order has been updated into rejected.</td>
+</tr>
+</tbody></table>
