@@ -67,7 +67,7 @@ function createPix() {
       var conversionUniqueId = offerId + '_' + orderId + '_' + productId; 
       var amount = items[i]["price"]; 
       var src = "https://shopback.go2cloud.org/aff_l?offer_id=" + offerId + "&adv_sub=" + 
-      orderId + "&adv_sub2=" + tier + "&adv_sub3=" + productId + "&adv_sub4=" +
+      orderId + "&adv_sub2=" + tier + "&adv_sub3=" + productId + "&conversion_unique_id=" +
       conversionUniqueId + "&amount=" + amount + "&security_token=" + securityToken;
       // create pixel 
       var pix = document.createElement("img");
