@@ -9,7 +9,7 @@
 function ShopBackCookieSave(name) {
     function ssCalculateExpireDate(days) {
         var d = new Date();
-        d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+        d.setTime(d.getTime() + (days * 86400000));
         d.toUTCString();
         return d;
     }
@@ -20,10 +20,8 @@ function ShopBackCookieSave(name) {
     if (getParams(name)) {
         document.cookie = name + "=" + getParams(name) + ";expires= " + ssCalculateExpireDate(30) + "; path=/";
         console.log("save " + name + "cookie successfully");
-        return;
     } else {
         console.log("this url doesnt contain" + name + "parameter.");
-        return;
     }
 }
 ```
@@ -33,10 +31,6 @@ function ShopBackCookieSave(name) {
 ```
 
 ### Referral Handle
-
-content
-
-content
 
 content
 

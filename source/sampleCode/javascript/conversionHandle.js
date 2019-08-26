@@ -29,7 +29,7 @@ function createPix() {
             var conversion_unique_id = offerId + '_' + orderId + '_' + product_id; //Optional
             var amount = items[i]["price"]; // Necessary
             var src = "https://shopback.go2cloud.org/aff_l?offer_id=" + offerId + "&adv_sub=" + 
-                orderId + "&adv_sub2=" + tier + "&adv_sub3=" + product_id + "&adv_sub4=" +
+                orderId + "&adv_sub2=" + tier + "&adv_sub3=" + product_id + "&conversion_unique_id=" +
                 conversion_unique_id + "&amount=" + amount + "&security_token=" + token;
             console.log(src + "\n");
         }

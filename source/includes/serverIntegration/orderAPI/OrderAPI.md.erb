@@ -103,9 +103,9 @@ for itemParam in params:
 | adv_sub2 (optional) | String that refer to specific tier set in ShopBack.(define by merchant) | String |
 | adv_sub3 (optional) | SKU of the order has been made | String |
 | adv_sub4 (optional) |  | String |
-| adv_sub5 (optional) |  | String |
-| conversion_unique_id |  | String |
-| security_token |  | String |
+| adv_sub5 (optional) | Product name | String |
+| conversion_unique_id | Unique key that concatenated by {merchant_name}_{order_id} | String |
+| security_token | Hash key provided by shopback for postback | String |
 | transaction_id | Hash value for ShopBack to identify each user and give cashback</br>(default to expire after postback) | String |
 
 ### Response Of Order API
@@ -113,8 +113,5 @@ for itemParam in params:
 | String | Description |
 | ------ | ----------- |
 | sucess=true; | Order has created successfully by API call. |
-| success=false;</br>err_msg=Invalid Trans. | ID Transaction_id is in wrong format.|
-| success=false;</br>err_msg=Request offer #1234 does not match session offer #2345. | This transaction_id wasn’t distributed by your offer.|
-| success=false;</br>err_msg=Duplicate recorded with Trans. ID | This transaction_id has already expired.|
 
 <%= partial "includes/serverIntegration/orderAPI/orderError.md" %>

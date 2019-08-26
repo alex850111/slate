@@ -86,9 +86,9 @@ for itemParam in params:
 | adv_sub2 (optional) | String that refer to specific tier set in ShopBack.(define by merchant) | String |
 | adv_sub3 (optional) | SKU of the order has been made | String |
 | adv_sub4 (optional) | conversion_unique_id | String |
-| adv_sub5 (optional) |  | String |
-| conversion_unique_id |  | String |
-| security_token |  | String |
+| adv_sub5 (optional) | Product name | String |
+| conversion_unique_id | Unique key that concatenated by {merchant_name}_{order_id} | String |
+| security_token | Hash key provided by shopback for postback | String |
 | status | Final validated status on merchant site | String |
 
 
@@ -97,7 +97,6 @@ for itemParam in params:
 | String | Description |
 | ------ | ----------- |
 | sucess=true; | Order has been updated into approved. |
-| success=false; | Order has been updated into rejected. |
 
 ### Note
 
