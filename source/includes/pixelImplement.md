@@ -34,12 +34,6 @@ function ShopBackCookieSave(name) {
 
 content
 
-content
-
-content
-
-content
-
 <aside class="notice"></br></br></br></br></aside>
 
 content
